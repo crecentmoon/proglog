@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/crecentmoon/proglog/internal/server"
+	"github.com/crecentmoon/proglog/1-LetsGo/internal/server"
 )
 
 func main() {

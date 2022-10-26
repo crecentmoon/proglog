@@ -1,4 +1,4 @@
-module github.com/crecentmoon/proglog
+module github.com/crecentmoon/proglog/1-LetsGo
 
 go 1.19
 
