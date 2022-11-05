@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package log.v1;
+
+option go_package = "github.com/crecentmoon/proglog/4-ServeRequestsWithgRPC/api/log_v1";
+
+service Log {
+  rpc Produce(ProduceRequest) returns (ProduceResponse) {}
+  rpc Consume(ConsumeRequest) returns (ConsumeResponse) {}
+  rpc ConsumeStream(ConsumeRequest) returns (stream ConsumeResponse) {}
+  rpc ProduceStream(stream ProduceRequest) returns (stream ProduceResponse) {}
+}
+
+message Record {
+  bytes value = 1;
+  uint64 offset = 2;
+}
+
+message ProduceRequest {
+  Record record = 1;
+}
+
+message ProduceResponse {
+  uint64 offset = 1;
+}
+
+message ConsumeRequest {
+  uint64 offset = 1;
+}
+
+message ConsumeResponse {
+  Record record = 1;
+}
+
+// To compile, RUN protoc api/v1/*.proto --go_out=. --go_opt=paths=source_relative --proto_path=.
